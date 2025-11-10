@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus Games - Compre 1, Leve 1 Jogo Offline na Steam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00ff00; /* Verde neon */
+            --background-color: #121212;
+            --surface-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --muted-text-color: #a0a0a0;
+            --dark-text-color: #121212;
+            --whatsapp-color: #25D366;
+            --border-color: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            background-image: linear-gradient(rgba(18, 18, 18, 0.95), rgba(18, 18, 18, 0.95)), url('https://source.unsplash.com/random/1600x900/?gaming,cyberpunk');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-shadow: 0 0 15px var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        header .subtitle {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: var(--muted-text-color);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background-color: var(--surface-color);
+            margin: 2rem 0;
+            padding: 2.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            counter-reset: steps-counter;
+        }
+
+        .steps-list li {
+            counter-increment: steps-counter;
+            margin-bottom: 1.5rem;
+            padding-left: 3.5rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .steps-list li::before {
+            content: counter(steps-counter);
+            position: absolute;
+            left: 0;
+            top: -5px;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--primary-color);
+            color: var(--dark-text-color);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+        
+        .steps-list li strong {
+            display: block;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        /* --- FAQ Styles --- */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .faq-question {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .faq-answer {
+            color: var(--muted-text-color);
+        }
+        .faq-answer strong {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* --- Testimonial Styles --- */
+        .testimonial-placeholder {
+            text-align: center;
+            padding: 2rem;
+            background-color: #151515;
+            border-radius: 8px;
+            border: 1px dashed var(--primary-color);
+        }
+        .testimonial-placeholder i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .testimonial-placeholder p {
+            color: var(--muted-text-color);
+        }
+
+        /* --- Game Gallery Styles --- */
+        @keyframes scroll-x {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .gallery-marquee {
+            overflow: hidden;
+            position: relative;
+            padding: 1rem 0;
+        }
+        .gallery-marquee:hover .gallery-track {
+            animation-play-state: paused;
+        }
+        .gallery-track {
+            display: flex;
+            gap: 1.5rem;
+            width: calc(14 * (220px + 1.5rem));
+            animation: scroll-x 45s linear infinite;
+        }
+        .game-card {
+            flex-shrink: 0;
+            width: 220px;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .game-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 255, 0, 0.7);
+        }
+        .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            background-color: var(--whatsapp-color);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.8);
+        }
+        .whatsapp-button i {
+            margin-right: 0.8rem;
+        }
+
+        .center-text {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--muted-text-color);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Nexus Games Offline</h1>
+            <p class="subtitle">Compre 1 Jogo e Leve Outro de Graça por Nossa Conta!</p>
+            <p>Aumente sua biblioteca Steam com os maiores lançamentos por um preço que você nunca viu. Jogos 100% funcionais para modo offline, baixados diretamente da Steam.</p>
+        </header>
+
+        <main>
+            <section class="section" id="how-it-works">
+                <h2>Como Funciona a Oferta?</h2>
+                <ol class="steps-list">
+                    <li>
+                        <strong>Escolha Seus Jogos</strong>
+                        Navegue pela nossa lista de jogos em destaque ou nos pergunte sobre um título específico. Você escolhe o jogo que quer comprar e o jogo que quer ganhar.
+                    </li>
+                    <li>
+                        <strong>Fale Conosco no WhatsApp</strong>
+                        Com os jogos em mente, clique no botão do WhatsApp para falar com nossa equipe, confirmar a disponibilidade e combinar o pagamento do seu jogo.
+                    </li>
+                    <li>
+                        <strong>Crie uma Conta Steam Nova</strong>
+                        Para garantir a segurança e o funcionamento do método, é necessário criar uma conta nova e sem jogos na Steam.
+                    </li>
+                    <li>
+                        <strong>Ativação Segura</strong>
+                        Após a confirmação, você nos informa os dados da conta nova. Nós adicionamos os dois jogos (o comprado e o brinde) à sua biblioteca e saímos. Depois, você pode trocar a senha.
+                    </li>
+                    <li>
+                        <strong>Baixe e Jogue Offline</strong>
+                        Pronto! Seus jogos estarão na sua biblioteca, prontos para serem baixados pela Steam. É só instalar e aproveitar o modo campanha.
+                    </li>
+                </ol>
+            </section>
+
+            <section class="section" id="featured-games">
+                <h2>Jogos em Destaque</h2>
+                <div class="gallery-marquee">
+                    <div class="gallery-track">
+                        <!-- Repetido para efeito de loop infinito -->
+                        <div class="game-card"><img src="catalogos/Call of Duty Black ops 6.jpeg" alt="Capa do jogo Call of Duty Black Ops 6"></div>
+                        <div class="game-card"><img src="catalogos/Forza Horizon5.jpeg" alt="Capa do jogo Forza Horizon 5"></div>
+                        <div class="game-card"><img src="catalogos/God of War Ragnarok.jpeg" alt="Capa do jogo God of War Ragnarok"></div>
+                        <div class="game-card"><img src="catalogos/gta5.jpeg" alt="Capa do jogo GTA 5"></div>
+                        <div class="game-card"><img src="catalogos/Spider Man 2.jpeg" alt="Capa do jogo Spider-Man 2"></div>
+                        <div class="game-card"><img src="catalogos/The Last Of Us parte 1.jpeg" alt="Capa do jogo The Last of Us Part 1"></div>
+                        <div class="game-card"><img src="catalogos/The Last Of Us parte 2.jpeg" alt="Capa do jogo The Last of Us Part 2"></div>
+                        <div class="game-card"><img src="catalogos/Call of Duty Black ops 6.jpeg" alt="Capa do jogo Call of Duty Black Ops 6"></div>
+                        <div class="game-card"><img src="catalogos/Forza Horizon5.jpeg" alt="Capa do jogo Forza Horizon 5"></div>
+                        <div class="game-card"><img src="catalogos/God of War Ragnarok.jpeg" alt="Capa do jogo God of War Ragnarok"></div>
+                        <div class="game-card"><img src="catalogos/gta5.jpeg" alt="Capa do jogo GTA 5"></div>
+                        <div class="game-card"><img src="catalogos/Spider Man 2.jpeg" alt="Capa do jogo Spider-Man 2"></div>
+                        <div class="game-card"><img src="catalogos/The Last Of Us parte 1.jpeg" alt="Capa do jogo The Last of Us Part 1"></div>
+                        <div class="game-card"><img src="catalogos/The Last Of Us parte 2.jpeg" alt="Capa do jogo The Last of Us Part 2"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section" id="faq">
+                <h2>Perguntas Frequentes (FAQ)</h2>
+                <div class="faq-item">
+                    <p class="faq-question">1. O procedimento é seguro?</p>
+                    <p class="faq-answer"><strong>Totalmente seguro.</strong> O processo é feito em uma conta Steam nova, sem nenhum dado pessoal seu. Os jogos são baixados diretamente dos servidores da Steam. Após a ativação, você pode e deve alterar a senha da conta.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">2. Por que os preços são tão baixos?</p>
+                    <p class="faq-answer">Conseguimos oferecer esses preços porque os jogos são estritamente para o <strong>modo offline (campanha/single-player)</strong>. Funções online, multiplayer e atualizações de ranking não são acessíveis, o que nos permite ter um custo de aquisição diferenciado.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">3. Como funciona a promoção "Compre 1, Leve 1"?</p>
+                    <p class="faq-answer">É simples: na compra do seu primeiro jogo conosco, você pode escolher <strong>outro jogo de valor igual ou inferior</strong> do nosso catálogo para levar inteiramente grátis. É um presente de boas-vindas!</p>
+                </div>
+                 <div class="faq-item">
+                    <p class="faq-question">4. Posso usar minha conta Steam principal?</p>
+                    <p class="faq-answer">Não. Para garantir a segurança de todos e o funcionamento do método, trabalhamos <strong>apenas com contas Steam novas</strong>, criadas exclusivamente para os jogos adquiridos conosco.</p>
+                </div>
+            </section>
+
+            <section class="section" id="testimonials">
+                <h2>O Que Nossos Clientes Dizem</h2>
+                <div class="testimonial-placeholder">
+                    <i class="fas fa-user-check"></i>
+                    <p>Depoimentos de clientes satisfeitos aparecerão aqui em breve!</p>
+                </div>
+            </section>
+
+            <section class="section center-text" id="contact">
+                <h2>Pronto para Dobrar sua Diversão?</h2>
+                <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--muted-text-color);">Clique no botão abaixo para falar com nossa equipe, tirar suas dúvidas e aproveitar a oferta!</p>
+                
+                <a href="https://wa.me/5511999998888" class="whatsapp-button" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                </a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Nexus Games Offline. Transparência e economia para sua diversão.</p>
+        </footer>
+    </div>
+
+</body>
+</html>
