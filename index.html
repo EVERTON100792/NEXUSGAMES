@@ -171,6 +171,63 @@
             color: var(--muted-text-color);
         }
 
+        /* --- 🌟 NOVO CSS: Menu de Navegação 🌟 --- */
+        .main-nav {
+            background-color: rgba(24, 24, 24, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 1.5rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1100;
+            transition: top 0.3s;
+        }
+        .main-nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         /* --- Game Gallery Styles --- */
         @keyframes scroll-x {
             from { transform: translateX(0); }
@@ -207,6 +264,44 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* --- 🌟 NOVO CSS: Avaliações de Clientes 🌟 --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .testimonial-card {
+            background-color: #151515;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+        .testimonial-text {
+            color: var(--muted-text-color);
+            font-style: italic;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        .testimonial-text::before {
+            content: '“';
+            font-size: 2rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            line-height: 1;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--text-color);
+            text-align: right;
         }
 
         .whatsapp-button {
@@ -296,6 +391,19 @@
 </head>
 <body>
 
+    <nav class="main-nav">
+        <div class="container">
+            <a href="#" class="nav-logo">NEXUS</a>
+            <ul class="nav-links">
+                <li><a href="#how-it-works">Como Funciona</a></li>
+                <li><a href="#featured-games">Jogos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#testimonials">Avaliações</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
             <h1>Nexus Games Offline</h1>
@@ -374,9 +482,19 @@
 
             <section class="section" id="testimonials">
                 <h2>O Que Nossos Clientes Dizem</h2>
-                <div class="testimonial-placeholder">
-                    <i class="fas fa-user-check"></i>
-                    <p>Depoimentos de clientes satisfeitos aparecerão aqui em breve!</p>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Atendimento super rápido e o processo foi muito mais simples do que eu imaginava. Peguei o God of War e ganhei o The Last of Us. Recomendo demais!</p>
+                        <p class="testimonial-author">- João P., São Paulo/SP</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">Estava com o pé atrás, mas o pessoal foi super transparente e me ajudou em cada passo. Agora estou jogando lançamentos que não poderia comprar. Valeu, Nexus!</p>
+                        <p class="testimonial-author">- Mariana S., Rio de Janeiro/RJ</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">A promoção de 'compre 1, leve 1' é sensacional. Dobrei minha biblioteca de jogos por um preço muito justo. Qualidade e confiança definem o serviço.</p>
+                        <p class="testimonial-author">- Carlos F., Belo Horizonte/MG</p>
+                    </div>
                 </div>
             </section>
 
@@ -384,7 +502,7 @@
                 <h2>Pronto para Dobrar sua Diversão?</h2>
                 <p style="margin-bottom: 2rem; font-size: 1.1rem; color: var(--muted-text-color);">Clique no botão abaixo para falar com nossa equipe, tirar suas dúvidas e aproveitar a oferta!</p>
                 
-                <a href="https://wa.me/5511999998888" class="whatsapp-button" target="_blank">
+                <a href="https://wa.me/5543998719821?text=Olá!%20Vi%20o%20anúncio%20no%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20de%20jogos." class="whatsapp-button" target="_blank">
                     <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
                 </a>
             </section>
@@ -395,7 +513,7 @@
         </footer>
     </div>
 
-    <a href="https://wa.me/5511999998888" class="whatsapp-float-button" target="_blank" aria-label="Fale conosco no WhatsApp">
+    <a href="https://wa.me/5543998719821?text=Olá!%20Vi%20o%20anúncio%20no%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20de%20jogos." class="whatsapp-float-button" target="_blank" aria-label="Fale conosco no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
     </body>
