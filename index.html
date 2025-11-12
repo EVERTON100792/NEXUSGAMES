@@ -228,6 +228,21 @@
             width: 100%;
         }
 
+        /* --- 🌟 NOVO CSS: Botão do Menu Hambúrguer 🌟 --- */
+        .nav-toggle {
+            display: none; /* Oculto em telas grandes */
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1500;
+        }
+
+        .nav-overlay {
+            display: none;
+        }
+
         /* --- Game Gallery Styles --- */
         @keyframes scroll-x {
             from { transform: translateX(0); }
@@ -387,9 +402,115 @@
         }
         /* --- Fim do Novo CSS --- */
 
+        /* --- 🌟 NOVO CSS: Media Queries para Responsividade 🌟 --- */
+        @media (max-width: 768px) {
+            header {
+                padding: 3rem 1rem;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
+            header .subtitle {
+                font-size: 1.2rem;
+            }
+            header p {
+                font-size: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            /* --- Menu Responsivo --- */
+            .nav-toggle {
+                display: block; /* Exibe o botão hambúrguer */
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Começa fora da tela */
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--surface-color);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+                
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                
+                transition: right 0.35s ease-in-out;
+                z-index: 1400;
+            }
+
+            .nav-links.active {
+                right: 0; /* Traz o menu para a tela */
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+
+            .nav-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(3px);
+                z-index: 1300;
+            }
+
+            .nav-overlay.active {
+                display: block;
+            }
+
+            /* Ajuste antigo removido para dar lugar ao novo menu */
+            /* .main-nav .container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            } */
+
+            .steps-list li {
+                padding-left: 3rem;
+                font-size: 1rem;
+            }
+            .steps-list li::before {
+                width: 2.2rem;
+                height: 2.2rem;
+                top: -3px;
+            }
+
+            .whatsapp-float-button {
+                width: 60px;
+                height: 60px;
+                font-size: 2.2rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+
+    <div class="nav-overlay"></div>
 
     <nav class="main-nav">
         <div class="container">
@@ -401,6 +522,9 @@
                 <li><a href="#avaliacoes">Avaliações</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
+            <button class="nav-toggle" aria-label="Abrir menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </nav>
 
@@ -516,5 +640,35 @@
     <a href="https://wa.me/5543998719821?text=Olá!%20Vi%20o%20anúncio%20no%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20promoção%20de%20jogos." class="whatsapp-float-button" target="_blank" aria-label="Fale conosco no WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const navOverlay = document.querySelector('.nav-overlay');
+            const navLinksAnchors = document.querySelectorAll('.nav-links a');
+
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                navToggle.setAttribute('aria-label', 'Abrir menu');
+            }
+
+            navToggle.addEventListener('click', function() {
+                const isActive = navLinks.classList.toggle('active');
+                navOverlay.classList.toggle('active', isActive);
+                if (isActive) {
+                    this.innerHTML = '<i class="fas fa-times"></i>'; // Ícone de 'X' para fechar
+                    this.setAttribute('aria-label', 'Fechar menu');
+                } else {
+                    closeMenu();
+                }
+            });
+
+            navOverlay.addEventListener('click', closeMenu);
+            navLinksAnchors.forEach(link => link.addEventListener('click', closeMenu));
+        });
+    </script>
     </body>
 </html>
